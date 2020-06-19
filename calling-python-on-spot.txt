@@ -1,1 +1,1 @@
---username bevo --passworkd utrobotics2020 --app-token ~/.bosdyn/dev.app_token/20200515_spotgenomics_russ_KgTxfk.app_token
+--username bevo --password utrobotics2020 --app-token ~/.bosdyn/dev.app_token/20200515_spotgenomics_russ_KgTxfk.app_token 192.168.80.3
