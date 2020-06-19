@@ -27,3 +27,16 @@ This is version 2.0.0 of the SDK. Please review the [Release Notes](docs/release
 * [API Protocol](docs/protos/README.md)
 * [Release Notes](docs/release_notes.md)
 * [SDK Repository](https://github.com/boston-dynamics/spot-sdk)
+
+
+# Added Functionality
+## Importing TF
+In order to import tf, as done in the streaming_image.py:
+1) make sure you are in py36 virtual env.
+2) in the workspace where you have the cv_bridge: cd ~/ws/src
+3) git clone https://github.com/ros/geometry
+4) git clone https://github.com/ros/geometry2
+5) pip install catkin_pkg pyyaml empy rospkg numpy
+6) catkin build geometry geometry2
+Then, once you want to run a python script in spot-sdk with tf, you simply need to ensure that the workspace with cv_bridge and geometry and geometry2 are sourced:
+	i.e. source ~/ws/install/setup.bash
