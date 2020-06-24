@@ -8,6 +8,7 @@
 
 import argparse
 import sys
+import os
 
 from bosdyn.api import image_pb2
 import bosdyn.client
@@ -46,6 +47,9 @@ def main(argv):
         image_responses = image_client.get_image_from_sources(options.image_sources)
 
         for image in image_responses:
+            print(image)
+            cv2.cvtColor(image.shot.image.data, cv2.COLOR_GRAY2RGB)
+
             if image.shot.image.pixel_format == image_pb2.Image.PIXEL_FORMAT_DEPTH_U16:
                 dtype = np.uint16
                 extension = ".png"
@@ -58,8 +62,16 @@ def main(argv):
                 img = img.reshape(image.shot.image.rows, image.shot.image.cols)
             else:
                 img = cv2.imdecode(img, -1)
-
+            
             cv2.imwrite(image.source.name + extension, img)
+            # path = os.getcwd() +'/'+  image.source.name + extension
+            # print(os.getcwd())
+            # print(path)
+            # testing = cv2.imread(path, 0)
+            # cv2.imwrite('test1.jpg', testing)
+            # cv2.cvtColor(testing, cv2.COLOR_GRAY2RGB)
+            # cv2.imwrite('test2.jpg', testing)
+
     return True
 
 
